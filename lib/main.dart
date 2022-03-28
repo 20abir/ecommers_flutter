@@ -1,3 +1,4 @@
+import 'package:ecommers_flutter/LogIn/login.dart';
 import 'package:ecommers_flutter/SignUp/signUp.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignUp(),
+      home: Login(),
     );
   }
 }
