@@ -1,5 +1,8 @@
 import 'package:ecommers_flutter/LogIn/login.dart';
-import 'package:ecommers_flutter/SignUp/Componant/componants.dart';
+import 'package:ecommers_flutter/widget/changescreen.dart';
+import 'package:ecommers_flutter/widget/myButton.dart';
+import 'package:ecommers_flutter/widget/myTextFormField.dart';
+import 'package:ecommers_flutter/widget/passwordFormField.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -61,8 +64,8 @@ class _SignUpState extends State<SignUp> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text_form(
-                      userName: 'User Name',
+                    MyTextFormFeild(
+                      name: 'User Name',
                       validator: (value) {
                         if (value!.length < 6) {
                           return 'User Name must be at least 6 characters';
@@ -75,7 +78,7 @@ class _SignUpState extends State<SignUp> {
                         }
                       },
                     ),
-                    Text_form(
+                    MyTextFormFeild(
                       validator: (value) {
                         if (value == "") {
                           return 'Please enter your Email';
@@ -85,10 +88,11 @@ class _SignUpState extends State<SignUp> {
                           return null;
                         }
                       },
-                      userName: 'Email',
+                      name: 'Email',
                     ),
-                    TextFormField(
-                      obscureText: obscureText,
+                    PasswordFormField(
+                      obsertext: obsertext,
+                      name: 'Password',
                       validator: (value) {
                         if (value == "") {
                           return 'Please enter your Password';
@@ -98,29 +102,14 @@ class _SignUpState extends State<SignUp> {
                           return null;
                         }
                       },
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        labelText: 'Password',
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              obscureText = !obscureText;
-                            });
-                            FocusScope.of(context).unfocus();
-                          },
-                          child: Icon(
-                              obscureText == true
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              color: Colors.black),
-                        ),
-                        labelStyle: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      onTap: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                        FocusScope.of(context).unfocus();
+                      },
                     ),
-                    Text_form(
+                    MyTextFormFeild(
                       validator: (value) {
                         if (value == "") {
                           return 'Please enter your Phone Number';
@@ -130,43 +119,28 @@ class _SignUpState extends State<SignUp> {
                           return null;
                         }
                       },
-                      userName: 'PhoneNumber',
+                      name: 'PhoneNumber',
                     ),
-                    SizedBox(
-                      height: 45,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          validation();
-                        },
-                        child: const Text('Register'),
-                      ),
+                    MyButton(
+                      onPressed: () {
+                        validation();
+                      },
+                      name: 'Sign Up',
                     ),
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  const Text("I Have Already an Account"),
-                  const SizedBox(width: 10),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (ctx) => const Login(),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
+              ChangeScreen(
+                name: "Login",
+                wichAccount: "Already have an account?",
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (ctx) => const Login(),
                     ),
-                  ),
-                ],
-              ),
+                  );
+                },
+              )
             ],
           ),
         ),

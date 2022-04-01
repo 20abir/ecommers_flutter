@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Text_form extends StatelessWidget {
-  final userName;
-  final Widget? suffixIcon;
-  final FormFieldValidator<String>? validator;
+class MyTextFormFeild extends StatelessWidget {
+  FormFieldValidator<String> validator;
+  final String name;
 
-  const Text_form({
+  MyTextFormFeild({
     Key? key,
-    this.suffixIcon,
-    required this.userName,
-    this.validator,
+    required this.validator,
+    required this.name,
   }) : super(key: key);
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +16,7 @@ class Text_form extends StatelessWidget {
       validator: validator,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
-        labelText: userName,
-        suffixIcon: suffixIcon,
+        labelText: name,
         labelStyle: const TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.bold,

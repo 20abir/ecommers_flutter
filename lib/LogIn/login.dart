@@ -1,4 +1,8 @@
 import 'package:ecommers_flutter/SignUp/signUp.dart';
+import 'package:ecommers_flutter/widget/changescreen.dart';
+import 'package:ecommers_flutter/widget/myButton.dart';
+import 'package:ecommers_flutter/widget/myTextFormField.dart';
+import 'package:ecommers_flutter/widget/passwordFormField.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -24,7 +28,7 @@ void validation() {
   }
 }
 
-bool observeText = true;
+bool obsertext = true;
 
 class _LoginState extends State<Login> {
   @override
@@ -50,7 +54,8 @@ class _LoginState extends State<Login> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    TextFormField(
+                    MyTextFormFeild(
+                      name: "Email",
                       validator: (value) {
                         if (value == "") {
                           return 'Please enter Email';
@@ -59,82 +64,48 @@ class _LoginState extends State<Login> {
                         }
                         return null;
                       },
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Email',
-                        labelStyle: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                     ),
-                    TextFormField(
-                        obscureText: observeText,
-                        validator: (value) {
-                          if (value == "") {
-                            return 'Please enter Password';
-                          } else if (value!.length < 8) {
-                            return 'Password must be atleast 8 characters';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          labelText: 'Password',
-                          labelStyle: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          suffixIcon: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                observeText = !observeText;
-                              });
-                            },
-                            child: Icon(
-                                observeText == true
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: Colors.black),
-                          ),
-                        )),
-                    SizedBox(
-                      height: 45,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          validation();
-                        },
-                        child: const Text('Login'),
-                      ),
+                    PasswordFormField(
+                      name: 'Password',
+                      obsertext: obsertext,
+                      validator: (value) {
+                        if (value == "") {
+                          return 'Please enter Password';
+                        } else if (value!.length < 8) {
+                          return 'Password must be atleast 8 characters';
+                        }
+                        return null;
+                      },
+                      onTap: () {
+                        setState(() {
+                          obsertext = !obsertext;
+                        });
+                      },
                     ),
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  const Text("I Have Not Account"),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (ctx) => const SignUp(),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      "SignUp",
-                      style: TextStyle(
-                        color: Colors.cyan,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+
+              //button
+
+              MyButton(
+                onPressed: () {
+                  validation();
+                },
+                name: 'Login',
+              ),
+              const SizedBox(height: 15),
+
+              ChangeScreen(
+                name: "SignUp",
+                wichAccount: "I don't have an account",
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (ctx) => const SignUp(),
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
             ],
           ),
