@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "673523943415",
+    "project_id": "e-commers-app-90ba3",
+    "storage_bucket": "e-commers-app-90ba3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673523943415:android:cd88b784d6564fdd0b90f2",
+        "android_client_info": {
+          "package_name": "com.example.ecommers_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673523943415-l3v92p804usiqs2iokmkqruu6bbp6ttm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS-ySSahHFroLKS7EXdV5-mDHG6_jv76s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673523943415-l3v92p804usiqs2iokmkqruu6bbp6ttm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
